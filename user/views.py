@@ -6,6 +6,7 @@ from django.contrib.auth import login, logout, authenticate
 
 def user_login(request):
     massage = ""
+    username = ""
     if request.method == "POST":
         username = request.POST.get("username")
         password = request.POST.get("password")
@@ -17,7 +18,9 @@ def user_login(request):
             massage = "login pass "
             return redirect("todolist")
 
-    return render(request, "user/login.html", {"massage": massage})
+    return render(
+        request, "user/login.html", {"massage": massage, "username": username}
+    )
 
 
 # Create your views here.
