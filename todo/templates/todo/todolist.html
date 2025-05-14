@@ -1,34 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<style>
-    h1{
-        text-align: center;
-        background-color: aqua;
-    }
-    body{
-        text-align: center;
-    }
-</style>
-<body>
-    {{user.username}}
-    {{user.email}}
-    <h1>show_table</h1>
-    {% for todo in todos %}
-    <h1>{{todo.id}}</h1>
-    <h2>
-        <a href="{% url 'viewtodo' todo.id %}">{{todo.title}}</a>
-    </h2>
-    <small>{{todo.created}}</small>
-    <li>{{todo.test}}</li>
-    {% if todo.important %}
-    <p style="color: red;">fist</p>
-    {% endif %}
-    <hr>
-    {% endfor %}
-</body>
-</html>
+{% extends 'base.html' %}
+{% block title %}
+test
+{% endblock %}
+{% block content %}
+
+<h1>show_table</h1>
+{% for todo in todos %}
+<h1>{{todo.id}}</h1>
+<h2>
+    <a href="{% url 'viewtodo' todo.id %}">{{todo.title}}</a>
+</h2>
+<small>{{todo.created}}</small>
+<li>{{todo.test}}</li>
+{% if todo.important %}
+<p style="color: red;">fist</p>
+{% endif %}
+<hr>
+{% endfor %}
+{% endblock %}
