@@ -4,8 +4,17 @@ test
 {% endblock %}
 {% block content %}
     {% if todo %}
-    {{todo}}
+    <h1>{{todo.title}}</h1>
+    
     {% else %}
     <h3>id erro</h3>
     {% endif %}
+
+    <form action="" method="POST">
+        {% csrf_token %}
+        {{form.as_p}}
+        <button type="submit">updata</button>
+        <p><a href="{% url 'todolist' %}">back</a></p>
+    </form>
+    {{massage}}
 {% endblock %}
