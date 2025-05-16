@@ -50,9 +50,10 @@ def user_register(request):
             if user:
                 massage = "this user is in"
             else:
-                User.objects.create_user(username=username, password=password1)
-                User.save()
+                user = User.objects.create_user(username=username, password=password1)
+                user.save()
                 massage = "all_pass ! "
+                return redirect("login")
     else:
         form = UserCreationForm()
     return render(request, "user/register.html", {"form": form, "massage": massage})

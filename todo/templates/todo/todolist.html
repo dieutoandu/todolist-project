@@ -1,10 +1,14 @@
 {% extends 'base.html' %}
 {% block title %}
-test
+todolist
 {% endblock %}
 {% block content %}
 
 <h1>show_table</h1>
+{% if  not todos %}
+<h3>please login or register , <a href="{% url 'login' %}">Login</a> <a href="{% url 'register' %}">Register</a> </h3>
+{% endif %}
+
 {% for todo in todos %}
 <h1>{{todo.id}}</h1>
 <h2>
@@ -17,4 +21,9 @@ test
 {% endif %}
 <hr>
 {% endfor %}
+
+
+
+
+
 {% endblock %}
