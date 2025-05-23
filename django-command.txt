@@ -1,0 +1,57 @@
+1. pip install django
+   diango-admin (檢查用)
+
+2. 建立專案
+django-admin startproject todolist .
+
+3. 啟動Server
+python manage.py runserver
+
+4.git init
+新增 .gitignore
+將db跟__pycache__/忽略
+
+5. git add .
+git commit -m "first init"
+
+6. 新增功能
+python manage.py startapp app
+
+7. 設定settings.py
+INSTALLED_APP註冊app
+LANGUAGE_CODE = "zh-Hant"
+TIME_ZONE = "Asia/Taipei"
+
+8. 邏輯寫在 views.py
+在 todolist/url.py 綁定 route
+path("",views.hello),
+"" => 首頁意思
+
+9. 新增樣板 
+新增目錄 templates
+settings.py 註冊 templates
+TEMPLATES = [
+    {
+       "BACKEND": "django.template.backends.django.DjangoTemplates",
+        "DIRS": ["templates"],
+}]
+
+10. 新增 templates\index.html
+views.py
+return render(request,"index.html")
+
+11. 建立超級使用者
+python manage.py migrate (同步)
+python manage.py createsuperuser
+
+
+python manage.py runserver
+
+12. 新增資料表
+python manage.py makemigrations (新增或修改跟刪除)
+python manage.py migrate (同步)
+
+
+
+
+
