@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 
 from pathlib import Path
 import pymysql
+import os
+from dotenv import load_dotenv
 
 pymysql.install_as_MySQLdb()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -84,14 +86,16 @@ DATABASES = {
     }
 }
 
+load_dotenv(BASE_DIR / ".env")
+
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.mysql",
-        "NAME": "defaultdb",
-        "USER": "avnadmin",
-        "PASSWORD": "AVNS_nBqN1aaNkT7lp9nbBDA",
-        "HOST": "mysql-1995081e-student-7aec.l.aivencloud.com",
-        "PORT": 27170,
+        "NAME": os.environ.get("DB_NAME"),
+        "USER": os.environ.get("DB_USER"),
+        "PASSWORD": os.environ.get("DB_PASSWORD"),
+        "HOST": os.environ.get("DB_HOST"),
+        "PORT": os.environ.get("DB_PORT"),
     }
 }
 
